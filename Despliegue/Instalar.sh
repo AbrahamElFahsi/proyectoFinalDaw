@@ -7,12 +7,12 @@
 
 # Variables de entorno
 
-USERDB="debianDB"
-PASSDB="debianDB"
+USERDB="root"
+PASSDB=""
 HOST=$(hostname -I)
 WWW="/var/www/html/"
 # Nombre del fichero de los datos en el proyecto 
-DATOS="BBDD.sql"
+DATOS="Datos.sql"
 BBDD="ProyectoIESLQ"
 
 # Se toman los parámetros como USER y PASS de la BBDD
