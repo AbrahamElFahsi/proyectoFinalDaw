@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.27, for Linux (x86_64)
 --
--- Host: localhost    Database: ProyectoIESLQ
+-- Host: localhost    Database: tiendacompraventa
 -- ------------------------------------------------------
 -- Server version	8.0.27
 
