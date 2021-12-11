@@ -16,7 +16,7 @@
         //Contraseña del usuario
         $password = "root";
         //Esquema de BD
-        $BD = "tiendaCompraVenta";
+        $BD = "tiendacompraventa";
 
         //Realizamos la conexión de la BD con la función mysqli_connect()
         $conexion = mysqli_connect($servidor,$usuario,$password,$BD);
