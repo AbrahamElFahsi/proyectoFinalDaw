@@ -18,7 +18,6 @@
 --
 -- Estructura de tabla para la tabla `usuario`
 --
-create database tiendacompraventa;
 CREATE TABLE usuario(
 idUsuario int(11) NOT NULL,
   usuario varchar(45) DEFAULT NULL,
