@@ -148,22 +148,17 @@ ALTER TABLE producto
 --
 -- Indices de la tabla `puja`
 --
-ALTER TABLE puja
-  ADD PRIMARY KEY (idPuja),
-  ADD KEY idUsuario (idUsuario),
-  ADD KEY idProducto (idProducto);
+ALTER TABLE puja ADD PRIMARY KEY (idPuja), ADD KEY idUsuario (idUsuario), ADD KEY idProducto (idProducto);
 
 --
 -- Indices de la tabla `seccion`
 --
-ALTER TABLE seccion
-  ADD PRIMARY KEY (idSeccion);
+ALTER TABLE seccion ADD PRIMARY KEY (idSeccion);
 
 --
 -- Indices de la tabla `usuario`
 --
-ALTER TABLE usuario
-  ADD PRIMARY KEY (idUsuario);
+ALTER TABLE usuario ADD PRIMARY KEY (idUsuario);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -172,32 +167,27 @@ ALTER TABLE usuario
 --
 -- AUTO_INCREMENT de la tabla `comentario`
 --
-ALTER TABLE comentario
-  MODIFY idComentario int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE comentario MODIFY idComentario int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
-ALTER TABLE producto
-  MODIFY idProducto int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE producto MODIFY idProducto int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `puja`
 --
-ALTER TABLE puja
-  MODIFY idPuja int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE puja MODIFY idPuja int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `seccion`
 --
-ALTER TABLE seccion
-  MODIFY idSeccion int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE seccion MODIFY idSeccion int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
-ALTER TABLE usuario
-  MODIFY idUsuario int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE usuario MODIFY idUsuario int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
@@ -206,26 +196,20 @@ ALTER TABLE usuario
 --
 -- Filtros para la tabla `comentario`
 --
-ALTER TABLE comentario
-  ADD CONSTRAINT comentario FOREIGN KEY (idUsuario) REFERENCES usuario (idUsuario);
-  ALTER TABLE comentario
-  ADD CONSTRAINT comentario FOREIGN KEY (idProducto) REFERENCES producto (idProducto);
+ALTER TABLE comentario ADD FOREIGN KEY (idUsuario) REFERENCES usuario (idUsuario);
+  ALTER TABLE comentario ADD FOREIGN KEY (idProducto) REFERENCES producto (idProducto);
 
 --
 -- Filtros para la tabla `producto`
 --
-ALTER TABLE producto
-  ADD CONSTRAINT producto FOREIGN KEY (idUsuario) REFERENCES usuario (idUsuario);
-  ALTER TABLE producto
-  ADD CONSTRAINT producto FOREIGN KEY (idSeccion) REFERENCES seccion (idSeccion);
+ALTER TABLE producto ADD FOREIGN KEY (idUsuario) REFERENCES usuario (idUsuario);
+  ALTER TABLE producto ADD FOREIGN KEY (idSeccion) REFERENCES seccion (idSeccion);
 
 --
 -- Filtros para la tabla `puja`
 --
-ALTER TABLE puja
-  ADD CONSTRAINT puja FOREIGN KEY (idUsuario) REFERENCES usuario (idUsuario):
-  ALTER TABLE puja
-  ADD CONSTRAINT puja_ibfk_2 FOREIGN KEY (idProducto) REFERENCES producto (idProducto);
+ALTER TABLE puja ADD FOREIGN KEY (idUsuario) REFERENCES usuario (idUsuario):
+  ALTER TABLE puja ADD FOREIGN KEY (idProducto) REFERENCES producto (idProducto);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
