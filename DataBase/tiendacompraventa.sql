@@ -35,13 +35,7 @@ idUsuario int(11) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE comentario(
-  idComentario int(11) NOT NULL,
-  idUsuario int(11) DEFAULT NULL,
-  contenido varchar(150) DEFAULT NULL,
-  idProducto int(11) DEFAULT NULL,
-  fecha datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 --
 -- Volcado de datos para la tabla `comentario`
@@ -71,8 +65,20 @@ CREATE TABLE producto (
 --
 -- Volcado de datos para la tabla `producto`
 --
+CREATE TABLE seccion (
+  idSeccion int(11) NOT NULL,
+  nombreSec varchar(50) DEFAULT NULL,
+  info varchar(150) DEFAULT NULL,
+  image varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
+CREATE TABLE comentario(
+  idComentario int(11) NOT NULL,
+  idUsuario int(11) DEFAULT NULL,
+  contenido varchar(150) DEFAULT NULL,
+  idProducto int(11) DEFAULT NULL,
+  fecha datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -100,12 +106,7 @@ CREATE TABLE puja (
 -- Estructura de tabla para la tabla `seccion`
 --
 
-CREATE TABLE seccion (
-  idSeccion int(11) NOT NULL,
-  nombreSec varchar(50) DEFAULT NULL,
-  info varchar(150) DEFAULT NULL,
-  image varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 --
 -- Volcado de datos para la tabla `seccion`
@@ -128,27 +129,23 @@ INSERT INTO usuario (idUsuario, usuario, password, nombre, apellidos, dni, comun
 --
 -- Índices para tablas volcadas
 --
-
+ALTER TABLE usuario ADD PRIMARY KEY (idUsuario);
 --
 -- Indices de la tabla `comentario`
 --
 ALTER TABLE comentario
-  ADD PRIMARY KEY (`idComentario`),
-  ADD KEY idUsuario (`idUsuario`),
-  ADD KEY idProducto (`idProducto`);
+  ADD PRIMARY KEY (idComentario);
 
 --
 -- Indices de la tabla `producto`
 --
 ALTER TABLE producto
-  ADD PRIMARY KEY (`idProducto`),
-  ADD KEY idUsuario (`idUsuario`),
-  ADD KEY idSeccion (`idSeccion`);
+  ADD PRIMARY KEY (idProducto);
 
 --
 -- Indices de la tabla `puja`
 --
-ALTER TABLE puja ADD PRIMARY KEY (idPuja), ADD KEY idUsuario (idUsuario), ADD KEY idProducto (idProducto);
+ALTER TABLE puja ADD PRIMARY KEY (idPuja);
 
 --
 -- Indices de la tabla `seccion`
@@ -158,7 +155,7 @@ ALTER TABLE seccion ADD PRIMARY KEY (idSeccion);
 --
 -- Indices de la tabla `usuario`
 --
-ALTER TABLE usuario ADD PRIMARY KEY (idUsuario);
+
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
