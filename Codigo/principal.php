@@ -1,4 +1,11 @@
-
+<?php
+require 'BD/ConectorBD.PHP';
+require 'BD/DAOUsuario.PHP';
+require 'BD/DAOProducto.PHP';
+require 'BD/DAOSeccion.PHP';
+require 'BD/DAOComentario.PHP';
+$conexion=conectar(false);
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,17 +15,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="ajax.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <?php include 'nav.php'; 
-require 'BD/ConectorBD.PHP';
-require 'BD/DAOUsuario.PHP';
-require 'BD/DAOProducto.PHP';
-require 'BD/DAOSeccion.PHP';
-require 'BD/DAOComentario.PHP';
-$conexion=conectar(false);
 ?>
 </head>
 <body style="background-color: rgba(203, 216, 252, 0.603);height: inherit; min-height: 100%; width: 100%;">

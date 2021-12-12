@@ -12,9 +12,9 @@
         }
         //Guardamos los datos para de conexion a la BD
         //Valor del usuario
-        $usuario = "debianDB";
+        $usuario = "root";
         //Contraseña del usuario
-        $password = "debianDB";
+        $password = "";
         //Esquema de BD
         $BD = "tiendacompraventa";
 
