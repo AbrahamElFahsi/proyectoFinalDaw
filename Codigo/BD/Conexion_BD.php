@@ -8,6 +8,6 @@
         require 'DAOUsuario.php';
         $usu=consultaUsuario($conexion,1);
         $p=mysqli_fetch_assoc($usu);
-        echo $p['usuario'];
+        echo $p['usuario']."h";
 
 ?>
