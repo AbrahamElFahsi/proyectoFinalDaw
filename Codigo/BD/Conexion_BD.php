@@ -5,5 +5,9 @@
 
         //Queremos conectarnos con la BD. 
         $conexion = conectar(false);
+        require 'DAOUsuario.php';
+        $usu=consultaUsuario($conexion,1);
+        $p=mysqli_fetch_assoc($usu);
+        echo $p['usuario'];
 
 ?>
