@@ -24,7 +24,7 @@
             echo mysqli_connect_error();
             return false;
         } else {
-            //echo "La conexión se ha realizado con exito. <br>";
+            echo "La conexión se ha realizado con exito. <br>";
             return $conexion;
         }
     }

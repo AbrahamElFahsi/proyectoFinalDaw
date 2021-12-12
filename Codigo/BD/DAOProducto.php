@@ -4,11 +4,7 @@ function consultaProductos($conexion){
     $resultado = mysqli_query($conexion,$consulta);
     return $resultado;
 }
-function buscador($conexion,$q){
-    $consulta = "select * from seccion inner join producto inner join usuario where seccion.nombre LIKE '%".$q."%'";
-    $resultado = mysqli_query($conexion,$consulta);
-    return $resultado;
-}
+
 function modificarPro($conexion,$producto,$campo,$nuevo){
     $consulta = "UPDATE producto SET $campo = '$nuevo' WHERE `idProducto` = $producto";
     $resultado = mysqli_query($conexion,$consulta);
