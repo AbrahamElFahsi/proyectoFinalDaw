@@ -15,8 +15,28 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+--
+-- Estructura de tabla para la tabla `usuario`
+--
 
-CREATE TABLE `comentario` (
+CREATE TABLE IF NOT EXISTS CREATE TABLE `usuario` (
+  `idUsuario` int(11) NOT NULL,
+  `usuario` varchar(45) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL,
+  `nombre` varchar(45) DEFAULT NULL,
+  `apellidos` varchar(50) DEFAULT NULL,
+  `dni` varchar(9) DEFAULT NULL,
+  `comunidad` varchar(50) DEFAULT NULL,
+  `provincia` varchar(50) DEFAULT NULL,
+  `cp` varchar(5) DEFAULT NULL,
+  `direccion` varchar(70) DEFAULT NULL,
+  `Rol` varchar(20) DEFAULT NULL,
+  `telefono` varchar(9) DEFAULT NULL,
+  `email` varchar(70) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE IF NOT EXISTS CREATE TABLE `comentario` (
   `idComentario` int(11) NOT NULL,
   `idUsuario` int(11) DEFAULT NULL,
   `contenido` varchar(150) DEFAULT NULL,
@@ -39,7 +59,7 @@ INSERT INTO `comentario` (`idComentario`, `idUsuario`, `contenido`, `idProducto`
 -- Estructura de tabla para la tabla `producto`
 --
 
-CREATE TABLE `producto` (
+CREATE TABLE IF NOT EXISTS CREATE TABLE `producto` (
   `idProducto` int(11) NOT NULL,
   `idUsuario` int(11) DEFAULT NULL,
   `fechaIni` datetime DEFAULT NULL,
@@ -74,7 +94,7 @@ INSERT INTO `producto` (`idProducto`, `idUsuario`, `fechaIni`, `fechaFin`, `prec
 -- Estructura de tabla para la tabla `puja`
 --
 
-CREATE TABLE `puja` (
+CREATE TABLE IF NOT EXISTS CREATE TABLE `puja` (
   `idPuja` int(11) NOT NULL,
   `idUsuario` int(11) DEFAULT NULL,
   `idProducto` int(11) DEFAULT NULL,
@@ -99,7 +119,7 @@ INSERT INTO `puja` (`idPuja`, `idUsuario`, `idProducto`, `fecha`, `valor`) VALUE
 -- Estructura de tabla para la tabla `seccion`
 --
 
-CREATE TABLE `seccion` (
+CREATE TABLE IF NOT EXISTS CREATE TABLE `seccion` (
   `idSeccion` int(11) NOT NULL,
   `nombreSec` varchar(50) DEFAULT NULL,
   `info` varchar(150) DEFAULT NULL,
@@ -116,25 +136,6 @@ INSERT INTO `seccion` (`idSeccion`, `nombreSec`, `info`, `image`) VALUES
 
 -- --------------------------------------------------------
 
---
--- Estructura de tabla para la tabla `usuario`
---
-
-CREATE TABLE `usuario` (
-  `idUsuario` int(11) NOT NULL,
-  `usuario` varchar(45) DEFAULT NULL,
-  `password` varchar(50) DEFAULT NULL,
-  `nombre` varchar(45) DEFAULT NULL,
-  `apellidos` varchar(50) DEFAULT NULL,
-  `dni` varchar(9) DEFAULT NULL,
-  `comunidad` varchar(50) DEFAULT NULL,
-  `provincia` varchar(50) DEFAULT NULL,
-  `cp` varchar(5) DEFAULT NULL,
-  `direccion` varchar(70) DEFAULT NULL,
-  `Rol` varchar(20) DEFAULT NULL,
-  `telefono` varchar(9) DEFAULT NULL,
-  `email` varchar(70) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuario`
