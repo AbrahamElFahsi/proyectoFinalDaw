@@ -59,8 +59,7 @@ create table `seccion`(`idSeccion` int(11) NOT NULL AUTO_INCREMENT, `idUsuario` 
   `info` varchar(150) DEFAULT NULL,
   `image` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-ALTER TABLE producto ADD FOREIGN KEY(`idSeccion`) REFERENCES
-seccion(`idSeccion`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
 LOCK TABLES `seccion` WRITE;
 INSERT INTO `seccion` (`idSeccion`, `nombreSec`, `info`, `image`) VALUES
 (1, 'Deportes', 'Encuentre todo sobre deporte nuevo o de segunda mano', 'images/1.jpg'),
@@ -81,6 +80,8 @@ UNLOCK TABLES;
   `titulo` varchar(50) DEFAULT NULL,
   `precioEnvio` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+ALTER TABLE producto ADD FOREIGN KEY(`idSeccion`) REFERENCES
+seccion(`idSeccion`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE producto ADD FOREIGN KEY(`idUsuario`) REFERENCES
 usuario(`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 LOCK TABLES `usuario` WRITE;
