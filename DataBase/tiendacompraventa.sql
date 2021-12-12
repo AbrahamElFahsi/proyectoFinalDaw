@@ -19,7 +19,7 @@
 -- Estructura de tabla para la tabla `usuario`
 --
 
-CREATE TABLE IF NOT EXISTS CREATE TABLE usuario(
+CREATE TABLE usuario(
 idUsuario int(11) NOT NULL,
   usuario varchar(45) DEFAULT NULL,
   password varchar(50) DEFAULT NULL,
@@ -36,7 +36,7 @@ idUsuario int(11) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE IF NOT EXISTS CREATE TABLE comentario(
+CREATE TABLE comentario(
   idComentario int(11) NOT NULL,
   idUsuario int(11) DEFAULT NULL,
   contenido varchar(150) DEFAULT NULL,
@@ -48,10 +48,7 @@ CREATE TABLE IF NOT EXISTS CREATE TABLE comentario(
 -- Volcado de datos para la tabla `comentario`
 --
 
-INSERT INTO comentario (idComentario, idUsuario, contenido, idProducto, fecha) VALUES
-(1, 1, '', 3, '2021-12-07 11:53:52'),
-(2, 1, 'hola', 3, '2021-12-07 12:02:48'),
-(3, 1, 'jajajaja', 4, '2021-12-08 11:01:36');
+
 
 -- --------------------------------------------------------
 
@@ -59,7 +56,7 @@ INSERT INTO comentario (idComentario, idUsuario, contenido, idProducto, fecha) V
 -- Estructura de tabla para la tabla `producto`
 --
 
-CREATE TABLE IF NOT EXISTS CREATE TABLE producto (
+CREATE TABLE producto (
   idProducto int(11) NOT NULL,
   idUsuario int(11) DEFAULT NULL,
   fechaIni datetime DEFAULT NULL,
@@ -76,17 +73,7 @@ CREATE TABLE IF NOT EXISTS CREATE TABLE producto (
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (idProducto, idUsuario, fechaIni, fechaFin, precioInicial, idSeccion, proImagen, Descripcion, titulo, precioEnvio) VALUES
-(1, 1, NULL, NULL, 80.15, 1, NULL, 'Nueva', 'bicicleta', NULL),
-(2, 1, NULL, NULL, 80, 1, NULL, 'viejo', 'casco', NULL),
-(3, 1, '2021-12-07 11:48:10', '2021-12-08 11:48:10', 20, 1, 'images/descarga.jpg', 'Telefono de juguete nuevo', 'Juguete', NULL),
-(4, 1, '2021-12-07 18:11:37', '2021-12-16 18:11:37', 1, 1, 'images/h.jpg', 'desa', 'Juguete', NULL),
-(5, 1, '2021-12-08 14:11:11', '2021-12-14 14:11:11', 20, 1, 'images/', '2k', 'xs', NULL),
-(6, 1, '2021-12-08 14:11:33', '2021-12-12 14:11:33', 5, 1, 'images/', 'hihji', 'lklk', NULL),
-(7, 1, '2021-12-09 17:22:07', '2021-12-19 17:22:07', 50000, 2, 'images/images.jfif', '2016', 'Audi', NULL),
-(8, 1, '2021-12-09 19:20:12', '2021-12-12 19:20:12', 20, 1, 'images/images.jfif', '', 'juguete', NULL),
-(9, 1, '2021-12-09 19:36:58', '2021-12-14 19:36:58', 1.15, 2, 'images/images.jfif', '', 'Audi', 1.01),
-(10, 1, '2021-12-09 20:07:45', '2021-12-14 20:07:45', 20, 2, 'images/images.jfif', 'hikjn', 'Audi', 20.4);
+
 
 -- --------------------------------------------------------
 
@@ -94,7 +81,7 @@ INSERT INTO `producto` (idProducto, idUsuario, fechaIni, fechaFin, precioInicial
 -- Estructura de tabla para la tabla `puja`
 --
 
-CREATE TABLE IF NOT EXISTS CREATE TABLE puja (
+CREATE TABLE puja (
   idPuja int(11) NOT NULL,
   idUsuario int(11) DEFAULT NULL,
   idProducto int(11) DEFAULT NULL,
@@ -106,12 +93,7 @@ CREATE TABLE IF NOT EXISTS CREATE TABLE puja (
 -- Volcado de datos para la tabla `puja`
 --
 
-INSERT INTO puja (idPuja, idUsuario, idProducto, fecha, valor) VALUES
-(1, 1, 3, '2021-12-07 11:54:04', 20.25),
-(2, 1, 4, '2021-12-08 11:01:57', 1.25),
-(3, 1, 6, '2021-12-08 19:05:54', 6),
-(4, 1, 5, '2021-12-08 19:06:13', 20),
-(5, 1, 4, '2021-12-09 15:57:29', 1.3);
+
 
 -- --------------------------------------------------------
 
@@ -119,7 +101,7 @@ INSERT INTO puja (idPuja, idUsuario, idProducto, fecha, valor) VALUES
 -- Estructura de tabla para la tabla `seccion`
 --
 
-CREATE TABLE IF NOT EXISTS CREATE TABLE seccion (
+CREATE TABLE seccion (
   idSeccion int(11) NOT NULL,
   nombreSec varchar(50) DEFAULT NULL,
   info varchar(150) DEFAULT NULL,
@@ -130,9 +112,6 @@ CREATE TABLE IF NOT EXISTS CREATE TABLE seccion (
 -- Volcado de datos para la tabla `seccion`
 --
 
-INSERT INTO seccion (idSeccion, nombreSec, info, image) VALUES
-(1, 'Deportes', 'Encuentre todo sobre deporte nuevo o de segunda mano', 'images/1.jpg'),
-(2, 'Motor', 'Lo mejor del motor', 'images/images.jfif');
 
 -- --------------------------------------------------------
 
@@ -229,9 +208,9 @@ ALTER TABLE usuario
 -- Filtros para la tabla `comentario`
 --
 ALTER TABLE comentario
-  ADD CONSTRAINT `comentario` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`);
+  ADD CONSTRAINT comentario FOREIGN KEY (idUsuario) REFERENCES usuario (idUsuario);
   ALTER TABLE comentario
-  ADD CONSTRAINT `comentario` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`idProducto`);
+  ADD CONSTRAINT comentario FOREIGN KEY (idProducto) REFERENCES producto (idProducto);
 
 --
 -- Filtros para la tabla `producto`
