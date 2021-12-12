@@ -44,9 +44,7 @@
   `telefono` varchar(9) DEFAULT NULL,
   `email` varchar(70) DEFAULT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8;
    
- ALTER TABLE producto ADD FOREIGN KEY(`idUsuario`) REFERENCES
-usuario(`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-LOCK TABLES `usuario` WRITE;
+ 
   INSERT INTO `usuario` (`idUsuario`, `usuario`, `password`, `nombre`, `apellidos`, `dni`, `comunidad`, `provincia`, `cp`, `direccion`, `Rol`, `telefono`, `email`) VALUES
 (1, 'fasi', 'fasi', 'hasan', NULL, NULL, NULL, NULL, NULL, NULL, 'admin', NULL, NULL),
 (2, 'asa', 'asa', 'asa', 'asa', '20202020x', NULL, NULL, NULL, NULL, 'usuario', NULL, NULL),
@@ -83,6 +81,9 @@ UNLOCK TABLES;
   `titulo` varchar(50) DEFAULT NULL,
   `precioEnvio` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+ALTER TABLE producto ADD FOREIGN KEY(`idUsuario`) REFERENCES
+usuario(`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+LOCK TABLES `usuario` WRITE;
 LOCK TABLES `producto` WRITE;
 INSERT INTO `producto` (`idProducto`, `idUsuario`, `fechaIni`, `fechaFin`, `precioInicial`, `idSeccion`, `proImagen`, `Descripcion`, `titulo`, `precioEnvio`) VALUES
 (1, 1, NULL, NULL, 80.15, 1, NULL, 'Nueva', 'bicicleta', NULL),
