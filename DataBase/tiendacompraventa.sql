@@ -43,13 +43,16 @@
   `Rol` varchar(20) DEFAULT NULL,
   `telefono` varchar(9) DEFAULT NULL,
   `email` varchar(70) DEFAULT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+   
+ ALTER TABLE producto ADD FOREIGN KEY(`idUsuario`) REFERENCES
+usuario(`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+LOCK TABLES `usuario` WRITE;
   INSERT INTO `usuario` (`idUsuario`, `usuario`, `password`, `nombre`, `apellidos`, `dni`, `comunidad`, `provincia`, `cp`, `direccion`, `Rol`, `telefono`, `email`) VALUES
 (1, 'fasi', 'fasi', 'hasan', NULL, NULL, NULL, NULL, NULL, NULL, 'admin', NULL, NULL),
 (2, 'asa', 'asa', 'asa', 'asa', '20202020x', NULL, NULL, NULL, NULL, 'usuario', NULL, NULL),
 (4, 'hasan', 'gfdgfdgfd', 'ghghgdgf', 'ghgh', 'ghgfh', 'Ceuta', 'Ceuta', '51070', 'thfttfgt', 'admin', '', 'fgh'),
 (5, 'hamete', 'tetete', 'fsdt', 'tetetetetete', '20421221x', 'Extremadura', 'Badajoz', '06080', 'C/ sAn fernteando', 'usu', '', 'fasifx@gmail.com');
-
+UNLOCK TABLES;
   DROP TABLE IF EXISTS `seccion`;
 create table `seccion`(`idSeccion` int(11) NOT NULL AUTO_INCREMENT, `idUsuario` int,
   UNIQUE KEY (`idSeccion`),
@@ -58,11 +61,13 @@ create table `seccion`(`idSeccion` int(11) NOT NULL AUTO_INCREMENT, `idUsuario` 
   `info` varchar(150) DEFAULT NULL,
   `image` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+ALTER TABLE producto ADD FOREIGN KEY(`idSeccion`) REFERENCES
+seccion(`idSeccion`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+LOCK TABLES `seccion` WRITE;
 INSERT INTO `seccion` (`idSeccion`, `nombreSec`, `info`, `image`) VALUES
 (1, 'Deportes', 'Encuentre todo sobre deporte nuevo o de segunda mano', 'images/1.jpg'),
 (2, 'Motor', 'Lo mejor del motor', 'images/images.jfif');
-
+UNLOCK TABLES;
   DROP TABLE IF EXISTS `producto`;
  create table `producto`(`idProducto` int NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`idProducto`),
@@ -78,10 +83,11 @@ INSERT INTO `seccion` (`idSeccion`, `nombreSec`, `info`, `image`) VALUES
   `titulo` varchar(50) DEFAULT NULL,
   `precioEnvio` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+LOCK TABLES `producto` WRITE;
 INSERT INTO `producto` (`idProducto`, `idUsuario`, `fechaIni`, `fechaFin`, `precioInicial`, `idSeccion`, `proImagen`, `Descripcion`, `titulo`, `precioEnvio`) VALUES
 (1, 1, NULL, NULL, 80.15, 1, NULL, 'Nueva', 'bicicleta', NULL),
 (2, 1, NULL, NULL, 80, 1, NULL, 'viejo', 'casco', NULL);
-
+UNLOCK TABLES;
 
   DROP TABLE IF EXISTS `puja`;
 create table `puja`(`idPuja` int NOT NULL AUTO_INCREMENT,
@@ -92,9 +98,12 @@ create table `puja`(`idPuja` int NOT NULL AUTO_INCREMENT,
   `fecha` datetime DEFAULT NULL,
   `valor` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+ ALTER TABLE puja ADD FOREIGN KEY(`idProducto`) REFERENCES
+producto(`idProducto`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+LOCK TABLES `puja` WRITE;
 INSERT INTO `puja` (`idPuja`, `idUsuario`, `idProducto`, `fecha`, `valor`) VALUES
 (1, 1, 1, '2021-12-07 11:54:04', 20.25);
-
+UNLOCK TABLES;
 
   DROP TABLE IF EXISTS `comentario`;
  create table comentario(
@@ -106,26 +115,20 @@ INSERT INTO `puja` (`idPuja`, `idUsuario`, `idProducto`, `fecha`, `valor`) VALUE
   `idProducto` int(11) DEFAULT NULL,
   `fecha` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-INSERT INTO `comentario` (`idComentario`, `idUsuario`, `contenido`, `idProducto`, `fecha`) VALUES
-(1, 1, '', 3, '2021-12-07 11:53:52'),
-(2, 1, 'hola', 3, '2021-12-07 12:02:48');
-
-
-
- ALTER TABLE producto ADD FOREIGN KEY(`idSeccion`) REFERENCES
-seccion(`idSeccion`) ON DELETE NO ACTION ON UPDATE NO ACTION;
- ALTER TABLE producto ADD FOREIGN KEY(`idUsuario`) REFERENCES
-usuario(`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
  ALTER TABLE comentario ADD FOREIGN KEY(`idUsuario`) REFERENCES
 usuario(`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
  ALTER TABLE comentario ADD FOREIGN KEY(`idProducto`) REFERENCES
 producto(`idProducto`);
- ALTER TABLE puja ADD FOREIGN KEY(`idProducto`) REFERENCES
-producto(`idProducto`) ON DELETE NO ACTION ON UPDATE NO ACTION;
- ALTER TABLE comentario ADD FOREIGN KEY(`idUsuario`) REFERENCES
-usuario(`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
- ALTER TABLE comentario ADD FOREIGN KEY(`idUsuario`) REFERENCES
-usuario(`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+LOCK TABLES `comentario` WRITE;
+INSERT INTO `comentario` (`idComentario`, `idUsuario`, `contenido`, `idProducto`, `fecha`) VALUES
+(1, 1, '', 3, '2021-12-07 11:53:52'),
+(2, 1, 'hola', 3, '2021-12-07 12:02:48');
+UNLOCK TABLES;
+
+
+
+
+
 
 
 
