@@ -16,8 +16,7 @@
 require 'BD/ConectorBD.PHP';
 
 require 'BD/DAOProducto.PHP';
-require 'BD/DAOSeccion.PHP';
-require 'BD/DAOComentario.PHP';
+
 $conexion=conectar(false);
 ?>
 </head>
