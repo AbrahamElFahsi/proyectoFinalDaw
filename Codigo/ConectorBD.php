@@ -19,9 +19,11 @@
         $BD = "tiendacompraventa";
 
         //Realizamos la conexión de la BD con la función mysqli_connect()
-        $conexion = mysqli_connect($servidor,$usuario,$password,$BD);
-        if (!$conexion){
-            echo mysqli_connect_error();
+        $conexion = new mysqli("127.0.0.1", $usuario, $password, $BD,3306);
+
+        //$conexion = mysqli_connect($servidor,$usuario,$password,$BD);
+        if ($conexion->connect_errno){
+            echo "Error MYSQL";
             return false;
         } else {
             echo "La conexión se ha realizado con exito. <br>";

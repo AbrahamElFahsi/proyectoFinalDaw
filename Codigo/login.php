@@ -9,10 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
     <link rel="stylesheet" href="css/style.css">
-    <?php include 'nav.php';
-
-          
-            $conexion=conectar(false); ?>
+   
     <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
 </head>
