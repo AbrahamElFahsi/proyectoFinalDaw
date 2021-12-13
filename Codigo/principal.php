@@ -13,9 +13,11 @@
     <script src="ajax.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <?php include 'nav.php'; 
-require 'ConectorBD.PHP';
-
-
+require 'BD/ConectorBD.php';
+require 'BD/DAOUsuario.php';
+require 'BD/DAOProducto.php';
+require 'BD/DAOSeccion.php';
+require 'BD/DAOComentario.php';
 $conexion=conectar(false);
 ?>
 </head>
@@ -34,7 +36,7 @@ $conexion=conectar(false);
                         <?php
                           $secciones=consultaSeccion($conexion);
                           $contador=0;
-                          while($seccion = mysqli_fetch_assoc($secciones)){
+                          while($seccion =$secciones->fetch_assoc()){
                             if($contador==0){
                            
 
@@ -82,7 +84,7 @@ $conexion=conectar(false);
        <?php
       $fecha=date('Y-m-d H:i:s');
         $productos=consultaProductosEnSubasta($conexion,$fecha);
-        while ($pro=mysqli_fetch_assoc($productos)) {
+        while ($pro=$productos->fetch_assoc()) {
             ?>
 <div class="card col-md-5 tarjetas p-3 m-5" >
                     <img src="<?php echo $pro['proImagen'];?>" class="card-img-top" alt="...">
@@ -134,7 +136,7 @@ $conexion=conectar(false);
                          <p>Precio Inicial<?php echo $pro['precioInicial']; ?></p>   
                         <p>Usuario que lo vende: <?php  
                         $vendedor=consultaUsuarioId($conexion,$pro['idUsuario']);
-                        $vend=mysqli_fetch_assoc($vendedor);
+                        $vend=$vendedor->fetch_assoc();
                         echo $vend['usuario'];
                         ?></p>
                         <?php 
@@ -144,15 +146,7 @@ $conexion=conectar(false);
 
                          ?>
                          <p>Ultima Puja:
-                            <?php if (mysqli_num_rows($puj)==1) {
-                          $PujaMax=mysqli_fetch_assoc($puj);
-                        if($PujaMax['max(valor)']!="" || $PujaMax['max(valor)']!=null || $PujaMax['max(valor)']!=0){ echo $PujaMax['max(valor)']." Euros";}}else {
-                           echo "Sin puja";
-                         } ?></p>
-                         <form action="mostrarProducto.php" method="POST">
-                        <input type="hidden" name="produId" value="<?php echo $pro['idProducto']; ?>">
-                        <input type="submit" class="btn btn-primary" value="Mostrar Informacion" name="mosInfo">
-                        </form>
+                            
                     </div>
                 </div>
             <?php
