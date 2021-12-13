@@ -10,8 +10,8 @@
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
     <link rel="stylesheet" href="css/style.css">
     <?php include 'nav.php';
-            require 'BD/ConectorBD.PHP';
-            require 'BD/DAOUsuario.PHP'; 
+
+          
             $conexion=conectar(false); ?>
     <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
@@ -39,27 +39,7 @@
     </form>
 
     </div>
-    <?php
-    if (isset($_POST['cambiarPass'])) {
-        echo $_SESSION['idUsuario']."".$_POST['contra'];
-        $resulModificarContra=modificar($conexion,$_SESSION['idUsuario'],"password",$_POST['contra']);
-        if ($resulModificarContra) {
-            ?>
-    <div class="card col-12">
-        <div class="card-header">
-            se modifico Correctamente
-        </div>
-        <div class="card-body">
-        <a href="recuperar_pass.php" class="btn btn-primary">Volver a Login</a>
-        </div>
-    </div>
-    <?php
-        }
-    
-}else{
-    echo "c";
-}
-?>
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     
