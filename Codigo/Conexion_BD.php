@@ -14,7 +14,7 @@ if (!$resultado = $conexion->query($consulta)) {
 
 echo "<table><tr><th>Usuario</th><th>Clave</th></tr>";
 while ($array_registro = $resultado->fetch_assoc()) {
-    echo "<tr><td>".$array_registro['idUsuario']."</td><td>".$array_registro['nombre']."</td></tr>";
+    echo $array_registro['idUsuario']." ".$array_registro['nombre']."<br>";
 }
 echo "</table>";
 

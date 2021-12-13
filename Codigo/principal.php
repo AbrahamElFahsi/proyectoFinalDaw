@@ -13,7 +13,7 @@
     <script src="ajax.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <?php include 'nav.php'; 
-require 'BD/ConectorBD.PHP';
+require 'ConectorBD.PHP';
 
 
 $conexion=conectar(false);
