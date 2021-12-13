@@ -5,9 +5,20 @@
 
         //Queremos conectarnos con la BD. 
         $conexion = conectar(false);
-        require 'DAOUsuario.php';
-        $usu=consultaUsuario($conexion,1);
-        $p=mysqli_fetch_assoc($usu);
-        echo $p['usuario']."h";
+        $consulta = "SELECT * FROM usuario";
+
+if (!$resultado = $conexion->query($consulta)) {
+    echo "Lo sentimos, no se pudo realizar la consulta.";
+    exit;
+}
+
+echo "<table><tr><th>Usuario</th><th>Clave</th></tr>";
+while ($array_registro = $resultado->fetch_assoc()) {
+    echo "<tr><td>".$array_registro['idUsuario']."</td><td>".$array_registro['nombre']."</td></tr>";
+}
+echo "</table>";
+
+$resultado->free(); 
+$conexion->close();
 
 ?>
