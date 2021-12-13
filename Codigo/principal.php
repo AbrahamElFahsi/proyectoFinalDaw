@@ -1,11 +1,6 @@
-<?php
-require 'BD/ConectorBD.PHP';
-require 'BD/DAOUsuario.PHP';
-require 'BD/DAOProducto.PHP';
-require 'BD/DAOSeccion.PHP';
-require 'BD/DAOComentario.PHP';
-$conexion=conectar(false);
-?>
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -18,6 +13,12 @@ $conexion=conectar(false);
     <script src="ajax.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <?php include 'nav.php'; 
+require 'BD/ConectorBD.PHP';
+
+require 'BD/DAOProducto.PHP';
+require 'BD/DAOSeccion.PHP';
+require 'BD/DAOComentario.PHP';
+$conexion=conectar(false);
 ?>
 </head>
 <body style="background-color: rgba(203, 216, 252, 0.603);height: inherit; min-height: 100%; width: 100%;">
